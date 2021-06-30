@@ -1,0 +1,77 @@
+﻿if (this.User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayoutView.cshtml";
+    }
+@model Workshop_Application.Models.Workshop
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Workshop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopDuration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopDuration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopSeats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

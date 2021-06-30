@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Workshop_Application.Models.Material>
+@if (this.User.IsInRole("Admin"))
+{
+    Layout = "~/Views/Shared/_AdminLayoutView.cshtml";
+}
+else if(this.User.IsInRole("Trainer"))
+{
+    Layout = "~/Views/Shared/_TrainerLayoutView.cshtml";
+}
+else if(this.User.IsInRole("Participant"))
+{
+    Layout = "~/Views/Shared/_ParticipantLayoutView.cshtml";
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaterialDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaterialPath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Workshop.WorkshopTitle)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaterialDesc)
+            </td>
+            <td>
+                <a href="@item.MaterialPath"> @Html.DisplayFor(modelItem => item.MaterialPath)</a>
+            </td>
+            <td>
+               
+                    @Html.DisplayFor(modelItem => item.Workshop.WorkshopTitle)
+                </td>
+            <td>
+                @if (this.User.IsInRole("Admin") || this.User.IsInRole("Trainer") || this.User.IsInRole("Participant"))
+                {
+                    @Html.ActionLink("Details", "Details", new { id = item.MaterialId })
+
+                }
+                else if (this.User.IsInRole("Admin") || this.User.IsInRole("Trainer"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaterialId })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaterialId })
+
+                }
+                
+
+            </td>
+        </tr>
+}
+
+</table>

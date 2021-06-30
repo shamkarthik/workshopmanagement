@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "ParticipantDashboard";
+}
+
+<h2>ParticipantDashboard</h2>
+
+<li>@Html.ActionLink("My Profile", "Details", new { id = @Session["id"] })</li>
+
+<li>@Html.ActionLink("Edit Profile", "Edit", new { id = @Session["id"] })</li>

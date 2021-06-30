@@ -1,0 +1,141 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    background: #1a2849;
+    min-height: 100vh;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+.top-content {
+    font-size: 4rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25vh;
+    color: #fff;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 90vw;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2.5rem;
+}
+
+.grid-item {
+    height: 40rem;
+    width: 300px;
+    padding: 2rem 5rem;
+    color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+    text-align: justify;
+}
+
+.novice {
+    background: linear-gradient(rgba(80, 91, 218, 0.9), rgba(80, 91, 218, 0.9)), url(https://images.pexels.com/photos/2679814/pexels-photo-2679814.jpeg?cs=srgb&dl=adventure-alberta-backpack-2679814.jpg&fm=jpg) no-repeat center center/cover;
+}
+
+.intermediate {
+    background: linear-gradient(rgba(80, 91, 218, 0.9), rgba(80, 91, 218, 0.9)), url(https://images.pexels.com/photos/2629320/pexels-photo-2629320.jpeg?cs=srgb&dl=adventure-backpacker-hike-2629320.jpg&fm=jpg) no-repeat center center/cover;
+}
+
+.expert {
+    background: linear-gradient(rgba(80, 91, 218, 0.9), rgba(80, 91, 218, 0.9)), url(https://images.pexels.com/photos/1824649/pexels-photo-1824649.jpeg?cs=srgb&dl=adventure-altitude-climber-1824649.jpg&fm=jpg) no-repeat center center/cover;
+}
+
+.grid-item ion-icon {
+    font-size: 3rem;
+}
+
+.grid-item h1 {
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    margin: 2rem 0;
+}
+
+.grid-item .btn {
+    margin-top: 1rem;
+    padding: 1rem 2.5rem;
+    background: #b063c5;
+    color: #f4f4f4;
+    display: inline-block;
+    text-align: center;
+    border-radius: 25px;
+    font-size: 1.6rem;
+    transition: all 0.35s;
+}
+
+    .grid-item .btn:hover {
+        background: #79348b;
+    }
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .expert {
+        margin-bottom: 5rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .top-content {
+        font-size: 3rem;
+        height: 20vh;
+    }
+
+    .grid-item {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .top-content {
+        font-size: 2.5rem;
+    }
+
+    .grid-item {
+        width: 250px;
+    }
+}
+
+footer p {
+    color:antiquewhite;
+}
+body h2 {
+    color:ivory;
+}
+
+h3 {
+    color: whitesmoke;
+}
+
+address {
+    color: whitesmoke;
+}

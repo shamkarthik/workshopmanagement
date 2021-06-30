@@ -1,0 +1,95 @@
+﻿@if (this.User.IsInRole("Admin"))
+{
+    Layout = "~/Views/Shared/_AdminLayoutView.cshtml";
+}
+else if (this.User.IsInRole("Trainer"))
+{
+    Layout = "~/Views/Shared/_TrainerLayoutView.cshtml";
+}
+else if (this.User.IsInRole("Participant"))
+{
+    Layout = "~/Views/Shared/_ParticipantLayoutView.cshtml";
+}
+@model IEnumerable<Workshop_Application.Models.Workshop>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkshopTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkshopDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkshopTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkshopDuration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkshopSeats)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkshopTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkshopDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkshopTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkshopDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkshopSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @if (this.User.IsInRole("Admin"))
+                {
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.WorkshopId })<br />
+                    @Html.ActionLink("Details", "Details", new { id = item.WorkshopId })<br />
+                    @Html.ActionLink("Edit", "Edit", new { id = item.WorkshopId })<br />
+                    @Html.ActionLink("Participant List", "WorkshopParticipant", new { id = item.WorkshopId })<br />
+                    @Html.ActionLink("Allocate Trainer", "AllocateTrainer", new { id = item.WorkshopId })<br />
+
+                }
+                else if (this.User.IsInRole("Trainer"))
+                {
+                    @Html.ActionLink("Details", "Details", new { id = item.WorkshopId })
+                }
+                else if (this.User.IsInRole("Participant"))
+                {
+                    @Html.ActionLink("Details", "Details", new { id = item.WorkshopId })
+                    @Html.ActionLink("JoinMeeting", "JoinMeeting")<br />
+                }
+
+
+
+            </td>
+        </tr>
+    }
+
+</table>

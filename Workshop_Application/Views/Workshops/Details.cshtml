@@ -1,0 +1,79 @@
+﻿@model Workshop_Application.Models.Workshop
+@if (this.User.IsInRole("Admin"))
+{
+    Layout = "~/Views/Shared/_AdminLayoutView.cshtml";
+}
+else if (this.User.IsInRole("Trainer"))
+{
+    Layout = "~/Views/Shared/_TrainerLayoutView.cshtml";
+}
+else if (this.User.IsInRole("Participant"))
+{
+    Layout = "~/Views/Shared/_ParticipantLayoutView.cshtml";
+}
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Workshop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopDuration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopDuration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopSeats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+    </dl>
+    @Html.ActionLink("Register", "OnRegisterWorkshop", new { @w_id = Model.WorkshopId })
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkshopId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,13 @@
+﻿@model Workshop_Application.Models.Workshop
+@{
+    ViewBag.Title = "Report";
+    
+}
+
+@Model.WorkshopId
+
+<h2>Report</h2>
+
+
+
+@Html.ActionLink("Participant List", "WorkshopParticipant", new { id = Model.WorkshopId })

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "TrainerDashboard";
+}
+
+<h2>TrainerDashboard</h2>
+
+
+
+<div class="trails" style="align-content: center">
+    <h1 class="top-content">
+        Lets Learn Together With LearnIT
+
+
+    </h1>
+
+    <div class="cards">
+        <div class="grid">
+            <div class="grid-item novice">
+                <ion-icon name="paper-plane"></ion-icon>
+                <h1>Edit My profile</h1>
+                <p>
+                    Click here to edit your profile
+                </p>
+                <div class="btn btn-default" style="background-color:ivory">
+                    @Html.ActionLink("Edit Profile", "Edit", new { id = @Session["id"] })
+                </div>
+                </div>
+            
+            <div class="grid-item expert">
+                <ion-icon name="rocket"></ion-icon>
+                <h1>Profile</h1>
+                <p>
+                    Click here to view profile
+                </p>
+                <div class="btn btn-default" style="background-color:ivory">
+                    @Html.ActionLink("My Profile", "Details", new { id = @Session["id"] })
+                  </div>
+                </div>
+            </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model Workshop_Application.Models.Material
+@if (this.User.IsInRole("Admin"))
+{
+    Layout = "~/Views/Shared/_AdminLayoutView.cshtml";
+}
+else if (this.User.IsInRole("Trainer"))
+{
+    Layout = "~/Views/Shared/_TrainerLayoutView.cshtml";
+}
+else if (this.User.IsInRole("Participant"))
+{
+    Layout = "~/Views/Shared/_ParticipantLayoutView.cshtml";
+}
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Material</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaterialDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaterialDesc)
+        </dd>
+
+        <dt>
+           @Html.DisplayNameFor(model => model.MaterialPath)
+        </dt>
+
+        <dd>
+            <a href="@Model.MaterialPath">@Html.DisplayFor(model => model.MaterialPath)</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Workshop.WorkshopTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Workshop.WorkshopTitle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaterialId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

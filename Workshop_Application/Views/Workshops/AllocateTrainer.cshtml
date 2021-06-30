@@ -1,0 +1,27 @@
+﻿@*@model Workshop_Application.Models.UserRole*@
+@{
+    var getlist = ViewBag.trainer as IEnumerable<Workshop_Application.Models.UserRole>;
+}
+
+@{
+    ViewBag.Title = "AllocateTrainer";
+}
+
+<h2>AllocateTrainer</h2>
+@using (Html.BeginForm("AllocateTrainer", "Workshops",FormMethod.Post))
+{
+<table>
+    @foreach (var t in getlist)
+    {
+
+    @t.UserName
+    @Html.ActionLink("Allocate", "AllocateTrainerPost", new { wId = ViewBag.WorkshopId, tId=t.UserId })
+
+
+    }
+</table>
+    
+
+    
+}
+
